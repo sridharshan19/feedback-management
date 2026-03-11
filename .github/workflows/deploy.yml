@@ -1,0 +1,40 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+      - name: Build and push Docker images
+        run: |
+          docker build -t your-dockerhub-username/feedback-client:latest ./client
+          docker build -t your-dockerhub-username/feedback-server:latest ./server
+          docker push your-dockerhub-username/feedback-client:latest
+          docker push your-dockerhub-username/feedback-server:latest
+
+      - name: Deploy to AWS EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker pull your-dockerhub-username/feedback-client:latest
+            docker pull your-dockerhub-username/feedback-server:latest
+            docker stop feedback-client || true
+            docker stop feedback-server || true
+            docker rm feedback-client || true
+            docker rm feedback-server || true
+            docker run -d --name feedback-client -p 80:80 sabarim6369/feedback-client:latest
+            docker run -d --name feedback-server -p 8000:8000 sabarim6369/feedback-server:latest

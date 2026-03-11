@@ -1,0 +1,233 @@
+
+.feedback-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eef2ff, #f7f9fc);
+    padding: 20px;
+    box-sizing: border-box;
+    animation: fadeInBackground 1s ease-in-out;
+  }
+  
+ 
+  .feedback-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 45%;
+    margin: 20px;
+    animation: slideInLeft 1s ease-out;
+  }
+  
+  .feedback-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feedback-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+ 
+  .feedback-form {
+    flex: 1;
+    max-width: 50%;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    animation: slideInRight 1s ease-out;
+  }
+  
+  .feedback-form h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #2d3748;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+ 
+  .name-email-group {
+    margin-bottom: 30px;
+  }
+  
+  .name-email-group .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .name-email-group .form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+  }
+  
+  .name-email-group .form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f7fafc;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .name-email-group .form-group input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 6px rgba(99, 102, 241, 0.3);
+  }
+  
+ 
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+  }
+  
+  .form-group label span {
+    color: #e53e3e;
+    font-weight: bold;
+  }
+  
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f7fafc;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 6px rgba(99, 102, 241, 0.3);
+  }
+  
+  .form-group textarea {
+    resize: none;
+    height: 120px;
+  }
+  
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(90deg, #6366f1, #4338ca);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background: linear-gradient(90deg, #4338ca, #6366f1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(67, 56, 202, 0.3);
+  }
+  
+  .submit-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(67, 56, 202, 0.2);
+  }
+  
+ 
+  @media (max-width: 1024px) {
+    .feedback-container {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 15px;
+    }
+  
+    .feedback-image,
+    .feedback-form {
+      max-width: 100%;
+      margin: 15px 0;
+    }
+  
+    .feedback-form {
+      padding: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .feedback-form h2 {
+      font-size: 24px;
+    }
+  
+    .form-group label {
+      font-size: 14px;
+    }
+  
+    .form-group select,
+    .form-group textarea {
+      font-size: 13px;
+      padding: 10px;
+    }
+  
+    .submit-button {
+      font-size: 16px;
+    }
+  }
+  
+ 
+  @keyframes fadeInBackground {
+    from {
+      background: #dbeafe;
+    }
+    to {
+      background: linear-gradient(135deg, #eef2ff, #f7f9fc);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
